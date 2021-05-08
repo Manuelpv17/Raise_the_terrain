@@ -2,7 +2,7 @@
 
 void draw(SDL_Instance instance)
 {
-    int x, y, row, column;
+    int x, y, row, column, i;
     double lenght, delta, delta_x, delta_y;
     int matrix[8][8] = {
         120,
@@ -71,27 +71,24 @@ void draw(SDL_Instance instance)
         16,
     };
 
-    SDL_SetRenderDrawColor(instance.renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-    /*
-    lenght = sqrt(pow(SCREEN_WIDTH - 10, 2) + pow(SCREEN_HEIGHT - 10, 2));
-    delta = lenght / 7;
-    */
     delta_x = (SCREEN_WIDTH - (SCREEN_MARGIN * 2)) / 14;
     delta_y = (SCREEN_HEIGHT - (SCREEN_MARGIN * 2)) / 14;
 
+    SDL_SetRenderDrawColor(instance.renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+
     for (row = 0; row < 8; row++)
     {
-        for (x = SCREEN_MARGIN + (row * delta_x), y = (SCREEN_HEIGHT / 2) + (row * delta_y); x < (SCREEN_WIDTH / 2) + (row * delta_x) - 1; x += delta_x, y -= delta_y)
+        for (i = 7, x = SCREEN_MARGIN + (row * delta_x), y = (SCREEN_HEIGHT / 2) + (row * delta_y); i > 0; x += delta_x, y -= delta_y, i--)
         {
-            SDL_RenderDrawLine(instance.renderer, x, y, x + delta_x, y - delta_y);
+            SDL_RenderDrawLine(instance.renderer, x, y - matrix[i][row], x + delta_x, y - delta_y - matrix[i - 1][row]);
         }
     }
 
     for (column = 0; column < 8; column++)
     {
-        for (x = (SCREEN_WIDTH / 2) - (column * delta_x), y = SCREEN_MARGIN + (column * delta_y); x < (SCREEN_WIDTH - SCREEN_MARGIN) - (column * delta_x) - 1; x += delta_x, y += delta_y)
+        for (i = 0, x = (SCREEN_WIDTH / 2) - (column * delta_x), y = SCREEN_MARGIN + (column * delta_y); i < 7; x += delta_x, y += delta_y, i++)
         {
-            SDL_RenderDrawLine(instance.renderer, x, y, x + delta_x, y + delta_y);
+            SDL_RenderDrawLine(instance.renderer, x, y - matrix[column][i], x + delta_x, y + delta_y - matrix[column][i + 1]);
         }
     }
 }
