@@ -5,18 +5,25 @@
 #include <stdio.h>
 #include <math.h>
 
-//Screen dimension constants
-const int SCREEN_WIDTH = 1100;
-const int SCREEN_HEIGHT = 600;
-const int SCREEN_MARGIN = 130;
+/* Screen dimension  */
+#define SCREEN_WIDTH 1100
+#define SCREEN_HEIGHT 600
+#define SCREEN_MARGIN 130
 
+/**
+ * struct SDL_Instance - SDL initializations
+ * @window: SDL window
+ * @renderer: SDL renderer
+ */
 typedef struct SDL_Instance
 {
-    SDL_Window *window;
-    SDL_Renderer *renderer;
+	SDL_Window *window;
+	SDL_Renderer *renderer;
 } SDL_Instance;
 
 int init_instance(SDL_Instance *);
-int poll_events();
+int poll_events(int *angle);
+void draw(SDL_Instance instance, int angle);
+void terrain_func(int (*copy)[8][8]);
 
 #endif
