@@ -17,7 +17,7 @@ git clone https://github.com/Manuelpv17/Raise_the_terrain.git
 
 ## Compilation
 
-    gcc *.c -lSDL2 -lSDL2main -lm -o raise_terrain
+    gcc -Werror -Wextra -pedantic -Wall *.c -lSDL2 -lSDL2main -lm -o raise_terrain
 
 ## Usage
 
