@@ -24,6 +24,5 @@ typedef struct SDL_Instance
 int init_instance(SDL_Instance *);
 int poll_events(int *angle);
 void draw(SDL_Instance instance, int angle);
-void terrain_func(int (*copy)[8][8]);
 
 #endif

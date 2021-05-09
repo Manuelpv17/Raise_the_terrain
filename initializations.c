@@ -19,7 +19,7 @@ int init_instance(SDL_Instance *instance)
 	if (instance->window == NULL)
 	{
 		fprintf(stderr, "SDL_CreateWindow Error: %s\n", SDL_GetError());
-		SDL_Quit;
+		SDL_Quit();
 		return (1);
 	}
 	/* Create a new Renderer instance linked to theWindow */
