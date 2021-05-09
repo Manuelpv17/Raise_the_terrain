@@ -13,11 +13,11 @@ Clone the current repository in you machine
 git clone https://github.com/Manuelpv17/Raise_the_terrain.git
 ```
 
-**Preview installation of [SDL2](https://wiki.libsdl.org/Installation) is require:**
+**Preview installation of [SDL2](https://wiki.libsdl.org/Installation) is require**
 
 ## Compilation
 
-    gcc -Werror -Wextra -pedantic -Wall *.c -lSDL2 -lSDL2main -lm -o raise_terrain
+    gcc -Wall -Werror -Wextra -pedantic  *.c -lSDL2 -lSDL2main -lm -o raise_terrain
 
 ## Usage
 
